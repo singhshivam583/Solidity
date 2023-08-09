@@ -29,3 +29,31 @@
 15) Write a program to do multiplication operation without using multiplication operator.
 
 
+Solidity Assignment - 2
+
+1) Write a program to concatenate two strings.
+2) Write a program to compare two strings whether they are equal or not. If equal return true otherwise false.
+3) Write a program to search for a number in an array.
+4) Write a program to find the largest in an array.
+5) Write a program to sort an array in increasing order. The array can have negative as well as positive numbers.
+6) Write a program to return an array in reverse order.
+7) Write a program to insert an element at a given location in an Array. Consider the array to be empty initially.
+8) Write a program to find the sum of array elements.
+9) Write a program to create a student struct having the student's name, roll number, and age. Write a
+   function to insert a student, and return the student's details.
+10) Write a program to store the student details of 10 students. Use the same student structure as you
+    have created above.
+11) Create a mapping from the address to an array(uint type) of length 3.
+    Where index=0 represents marks in Math, index=1 represents marks in English, and index=2 represents
+    marks in History.
+    Write a function to insert marks of an address and return marks of an address.
+12) Create a mapping from the address to the Student struct(created above at 9). Store the details in
+    the mapping and return details.
+13) Create a mapping(address=>mapping(address=>bool)).
+    Write a function by the name of "transferOwnership" which change the status of mapping to true when
+    the ownership is transferred from address 1 to address 2.
+    Write a function by the name of 'ownershipStatus' which returns the status of the ownership.
+14) Create a dynamic string array. And perform the operation of push, pop, and return the entire array.
+15) Create an enum House having members SMALL,MEDIUM and LARGE.
+    Create a function to insert the house value and get the house value.
+

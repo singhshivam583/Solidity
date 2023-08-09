@@ -1,230 +1,215 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.8.2 <0.9.0;
+pragma solidity >=0.7.0 <0.9.0;
 
 contract Q1{
-    function cube(uint a)public pure returns(uint){
-        return a*a*a;
+    function concatenation(bytes memory str1,bytes memory str2)public pure returns(string memory){
+        bytes memory str=bytes.concat(str1,str2);
+        return string(str);
     }
 }
 
 contract Q2{
-    function oddeven(uint a) public pure returns(uint){
-        require(a>0,"the given number is neither odd nor even");
-        if(a%2==0){
-            return 1;
+
+    function comparison( bytes memory str1, bytes memory str2) public pure returns(bool){
+        if(keccak256(bytes(str1))==keccak256(bytes(str2))){
+            return true;
         }
-        else{
-            return 0;
-        }       
+        return false;
     }
+
 }
 
 contract Q3{
-    function avg(uint a,uint b,uint c) public pure returns(uint){
-        return (a+b+c)/3;
+    uint[5] public arr=[10,15,5,25,30];
+    function searching(uint a) public view returns(bool){
+        for(uint i=0;i<5;i++){
+            if(arr[i]==a){
+                return true;
+            } 
+        }
+        return false;
     }
 }
 
 contract Q4{
-    function swap(uint a,uint b) public pure returns(uint,uint){
-        uint c=a;
-        a=b;
-        b=c;
-        return (a,b);
+    // uint[5] public arr=[10,15,5,25,30];
+    function searching(uint[5] memory arr) public pure returns(string memory,uint){
+        uint  b=0;
+        for(uint i=0;i<5;i++){
+            if(arr[i]>b){
+                b=arr[i];
+            } 
+        }
+        return ("this is the greatest number",b);
     }
 }
 
 contract Q5{
-    function power(uint x,uint y) public pure returns(uint){
-        // uint a=1;
-        // for(uint i=1;i<=y;i++){
-        //     a=x*a;
-        // }
-        // return a;
-        return x**y;
+    function searching(int[5] memory arr) public pure returns(int[5] memory){
+        int b;
+        for(uint i=0;i<arr.length-1;i++){
+            for(uint j=0;j<arr.length-i-1;j++){
+                if(arr[j]>arr[j+1]){
+                    b=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=b;
+                }
+            }
+        }
+        return arr; 
     }
 }
 
 contract Q6{
-     function swapping(int a,int b) public pure returns(int,int){
-        a=a+b;
-        b=a-b;
-        a=a-b;
-        return (a,b);
+    function searching(int[5] memory arr) public pure returns(int[5] memory){
+
+        int b;
+        for(uint i=0;i<arr.length-1;i++){
+            for(uint j=0;j<arr.length-i-1;j++){
+                    b=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=b;
+            }
+        }
+        return arr;
+
+        // int[5] memory rev_arr;
+        // for(uint i=0;i<arr.length;i++){
+        //    rev_arr[arr.length-i-1]=arr[i];
+        // }
+        // return rev_arr;
     }
 }
 
 contract Q7{
-    function isPrime(uint a) public pure returns(string memory){
-        if(a<=1){
-            return "This is not Prime Number";
-        }
-        else{        
-            for(uint i=2;i<a;i++){
-                if(a%i==0){
-                    return "This is not Prime Number";
-                }
-            } 
-        }            
-        return "This is Prime Number";                   
+    // int[5] arr;
+    function add(uint index,int num) public pure returns(int[5] memory) {
+        int[5]  memory arr1; 
+        // arr1=arr;
+        arr1[index]=num;
+        return arr1;
     }
+    // function print()public view returns(uint[5] memory){
+    //     return arr1;
+    // }
 }
 
 contract Q8{
-    function isArmstrong(uint num) public pure returns (string memory) {
-        uint sum = 0;
-        uint temp = num;
-        uint power = length(num);
-        
-        while (temp > 0) {
-            uint last_digit=temp%10;
-            sum +=last_digit**power;
-            temp /= 10;
+    function summation(int[5] memory arr) public pure returns(int){
+        int sum;
+        for(uint i=0;i<arr.length;i++){
+            sum+=arr[i];
         }
-        if (sum==num){
-        return "This is Armstrong Number";
-        }
-        else{
-            return "This is not Armstrong Number";
-        }
-    }
-    
-    function length(uint num) internal pure returns (uint) {
-        if (num == 0) {
-            return 1;
-        }
-        uint digits = 0;
-        while (num > 0) {
-            num /= 10;
-            digits++;
-        }
-        return digits;
+        return sum;
     }
 }
 
 contract Q9{
-    function Greatest(uint a, uint b, uint c)public pure returns(uint){
-        if (a>b){
-            if(a>c){
-                return a;
-            }
-            else{
-                return c;
-            }
-        }
-        else{
-            if(b>c){
-                return b;
-            }
-            else{
-                return c;
-            }
-        }
+    struct student{
+        string name;
+        uint roll;
+        uint age;
     }
+    student public std;
+    function insert(string memory _name,uint _roll,uint _age)public{
+        std=student(_name, _roll, _age);
+    }
+    function print()public view returns(student memory){
+        return std;
+    }
+}
+
+contract Q10{
+    struct student{
+        string name;
+        uint roll;
+        uint age;
+    }
+    student[10] public std;
+    function insert(uint index,string memory _name,uint _roll,uint _age)public{
+        std[index]=student(_name, _roll, _age);
+    }
+    function print()public view returns(student[10] memory){
+        return std;
+    }
+
 }
 
 contract Q11{
+    mapping(address=>uint[3]) public Marks;
+    function insert(uint math,uint eng,uint history) public{
+        Marks[msg.sender]=[math,eng,history];
 
-    function reverseNumber(uint num) public pure returns (uint) {
-        uint reversed = 0;
-        
-        while (num > 0) {
-            uint256 digit = num % 10;
-            reversed = (reversed * 10) + digit;
-            num /= 10;
-        }
-        
-        return reversed;
     }
+    function print(address add) public view returns(uint[3] memory){
+        return Marks[add];
+    }
+
 }
-
-
-contract Q10{
-    function isPalindrome(uint num) public pure returns (uint) {
-        if(num==reverseNumber(num)){
-            return 1;
-        }
-        else{
-            return 0;
-        }
-    }
-    
-    function reverseNumber(uint num) internal pure returns (uint) {
-        uint reversed = 0;
-        
-        while (num > 0) {
-            uint256 digit = num % 10;
-            reversed = (reversed * 10) + digit;
-            num /= 10;
-        }
-        
-        return reversed;
-    }
-}
-
 
 contract Q12{
-    function IntSum(uint num) public pure returns (uint) {
-        uint sum = 0;
-        uint temp = num;
+    struct student{
+        string name;
+        uint roll;
+        uint age;
+    }
+    // student std;
+    mapping(address=>student) public details;
+    function insert(string memory _name,uint _roll,uint _age)public {
+        //std=student(_name,_roll,_age);
+        // details[msg.sender]=std;
+        details[msg.sender]=student(_name,_roll,_age);
+        //OR
+        // details[msg.sender].name=_name;
+        // details[msg.sender].roll=_roll;
+        // details[msg.sender].age=_age;
         
-        while (temp > 0) {
-            uint last_digit=temp%10;
-            sum +=last_digit;
-            temp /= 10;
-        }
-        return sum;   
+    }
+    function print(address add) public view returns(student memory){
+        return details[add];
     }
 }
 
 contract Q13{
-    function Factorial(uint a) public pure returns(uint){
-        uint b=a;
-        for (uint i=1;i<a;i++){
-            b*=i;
-        }
-        return b;
+    mapping(address => mapping(address => bool)) ownership;
 
-    //     for (uint i=(a-1);i>=1;i--){
-    //         a*=i;
-    //     }
-    //     return a;
-     }
+    function transferOwnership(address address1, address address2) public {
+        ownership[address1][address2] = true;
+    }
+
+    function ownershipStatus(address address1, address address2) public view returns (bool) {
+        return ownership[address1][address2];
+    }
 }
-
 
 contract Q14{
-    function Fibonacci(uint a) public pure returns (uint[] memory) {
-        
-        uint[] memory fib_arr = new uint[](a);
-        
-        if (a >= 1) {
-            fib_arr[0] = 0;
-        }
-        
-        if (a >= 2) {
-            fib_arr[1] = 1;
-        }
-        
-        for (uint i = 2; i<a; i++) {
-            fib_arr[i] = fib_arr[i - 1] + fib_arr[i - 2];
-        }
-        
-        return fib_arr;
+    string[] public arr;
+    function push(string memory name)public{
+        arr.push(name);
+    }
+    function pop()public{
+        arr.pop();
+    }
+    function print()public view returns(string[] memory){
+        return arr;
     }
 }
-
 
 contract Q15{
-    function multiplication(uint a,uint b)public pure returns(uint){
-        uint num=0;
-        for(uint i=1;i<=b;i++){
-            num +=a;
-        }
-        return num;
-    }
+    enum house{small,medium,large}
+    house public choice;
 
+    function insert(house _choice)public{
+        choice=house(_choice);
+    }
+    function get()public view returns(house){
+        return choice;
+    }
 }
-  
-  
+
+
+    
+
+
+
