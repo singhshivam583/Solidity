@@ -22,7 +22,7 @@ contract Q2{
 
 contract Q3{
     function avg(uint a,uint b,uint c) public pure returns(uint){
-        return (a+b+c)/3;
+        return (a+b+c)/2;
     }
 }
 
