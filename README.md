@@ -57,3 +57,29 @@ Solidity Assignment - 2
 15) Create an enum House having members SMALL,MEDIUM and LARGE.
     Create a function to insert the house value and get the house value.
 
+
+Solidity Assignment - 3
+
+1) Create a contract named 'Student' with String variable 'name' and integer variable 'roll_no'. Assign the
+   value of roll_no as '10' and that of the name as "Raj" by creating an object of the class Student.
+2) Create a contract named 'Box' with a uint variable name length, breadth, and height. Create an instance of
+   the Box object and set the length, breadth, and height of the box to 2,3,4 by using its constructor.
+3) Create a contract Car that has the following -
+   wheels=4,doors=4,brandName="CTE",headlight=2,safteyBag=true.
+   Create a new contract superCar and inherit characteristics of Car and add some extra characteristics such as
+   speed=400, modelNumber=121,modelName="Texxo"
+4) Create an abstract contract Calculator. It contains four functions without implementation-
+   add(uint _x,uint _y),sub(uint _x,uint _y),div(uint _x,uint _y),mul(uint _x,uint _y).
+   Inherit this Calculator function and implement all the functions.
+5) Create a function add(). If two numbers are passed then this function returns its addition
+   and if two strings are passed then it returns the concatenated strings. {Hint: Use Polymorphism}.
+6) Create a sendEther(address _to) function. Using this function anyone can transfer ether to the "_to" address.
+7) Write a program to transfer ether to the contract balance and to return the contract balance.
+8) Write a program to transfer ether from one address to another. And also create an Event
+   which gets emits the sender address, receiver address, and the ether sent to the receiver address.
+9) Use require statement to restrict the ownership of a function. Create any function of your choice.
+   This function can only be called by the owner of the contract means the address which has deployed
+   the smart contract.
+10) Create two contracts A and B. In contract B create a public string variable str and assign "hello world" to it.
+   Then in contract A import contract B and then and return the value of str(created in contract B).
+
