@@ -14,6 +14,6 @@ contract Hello{
     }
 
     function getterstate() public view returns(uint){
-        return x;
+        return x+5;
     } 
 }
